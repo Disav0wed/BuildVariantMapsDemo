@@ -5,11 +5,15 @@ buildscript {
     repositories {
         google()
         jcenter()
+        //Add Maven
+        maven {url 'http://developer.huawei.com/repo/'}
         
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // Add this line
+        classpath 'com.huawei.agconnect:agcp:1.1.1.300'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -20,6 +24,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        //Add Maven
+        maven {url 'http://developer.huawei.com/repo/'}
         
     }
 }
