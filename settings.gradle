@@ -1,0 +1,2 @@
+rootProject.name='BuildVariantMapsDemo'
+include ':app'
