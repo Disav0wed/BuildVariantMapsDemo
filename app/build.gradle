@@ -8,6 +8,25 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
+    signingConfigs {
+        debug {
+            storeFile file('demo.jks')
+            keyAlias 'buildvariantmaps'
+            keyPassword '123456'
+            storePassword '123456'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        release{
+            storeFile file('demo.jks')
+            keyAlias 'buildvariantmapsrelease'
+            keyPassword '123456'
+            storePassword '123456'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
     defaultConfig {
         applicationId "com.ibrahimrecepserpici.buildvariantmapsdemo"
         minSdkVersion 23
@@ -19,9 +38,16 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            debuggable true
         }
     }
 
@@ -37,5 +63,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation 'com.huawei.agconnect:agconnect-core:1.0.0.300'
+    implementation 'com.huawei.agconnect:agconnect-core:1.2.1.300'
+    implementation 'com.huawei.hms:maps:4.0.1.301'
 }
