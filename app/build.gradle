@@ -51,6 +51,21 @@ android {
         }
     }
 
+    flavorDimensions "provider"
+    productFlavors
+            {
+                huawei
+                        {
+                            dimension "provider"
+                            versionNameSuffix "HMS"
+                        }
+                google
+                        {
+                            dimension "provider"
+                            versionNameSuffix "GMS"
+                        }
+            }
+
 }
 
 dependencies {
@@ -63,6 +78,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation 'com.huawei.agconnect:agconnect-core:1.2.1.300'
-    implementation 'com.huawei.hms:maps:4.0.1.301'
+    //Huawei Dependencies
+    huaweiImplementation 'com.huawei.agconnect:agconnect-core:1.2.1.300'
+    huaweiImplementation 'com.huawei.hms:maps:4.0.1.301'
 }

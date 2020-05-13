@@ -1,9 +1,10 @@
-package com.ibrahimrecepserpici.buildvariantmapsdemo
+package com.ibrahimrecepserpici.huaweivariant
 
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.huawei.hms.maps.HuaweiMap
 import com.huawei.hms.maps.SupportMapFragment
+import com.ibrahimrecepserpici.buildvariantmapsdemo.R
 
 class MapHelper {
 
@@ -20,7 +21,7 @@ class MapHelper {
     fun initMap()
     {
         Log.e("TEST","initMap Called.")
-        val mapFragment  = (mActivity.supportFragmentManager.findFragmentById(com.ibrahimrecepserpici.buildvariantmapsdemo.R.id.mapFragment) as SupportMapFragment)
+        val mapFragment  = (mActivity.supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment)
         mapFragment.getMapAsync {
             map = it
         }

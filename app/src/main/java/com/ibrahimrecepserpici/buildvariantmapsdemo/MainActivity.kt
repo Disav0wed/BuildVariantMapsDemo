@@ -1,5 +1,6 @@
 package com.ibrahimrecepserpici.buildvariantmapsdemo
 
+import com.ibrahimrecepserpici.huaweivariant.MapHelper
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
@@ -70,12 +71,8 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if(requestCode == REQUEST_CODE)
         {
-
-
             /**Recreate the whole activity**/
             this.recreate()
-
-
         }
     }
 }
