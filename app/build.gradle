@@ -2,9 +2,30 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'com.huawei.agconnect'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
+
+    signingConfigs {
+        debug {
+            storeFile file('demo.jks')
+            keyAlias 'buildvariantmaps'
+            keyPassword '123456'
+            storePassword '123456'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        release{
+            storeFile file('demo.jks')
+            keyAlias 'buildvariantmapsrelease'
+            keyPassword '123456'
+            storePassword '123456'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
 
     defaultConfig {
         applicationId "com.ibrahimrecepserpici.buildvariantmapsdemo"
@@ -17,11 +38,33 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            debuggable true
         }
     }
+
+    flavorDimensions "provider"
+    productFlavors
+            {
+                huawei
+                        {
+                            dimension "provider"
+                            versionNameSuffix "HMS"
+                        }
+                google
+                        {
+                            dimension "provider"
+                            versionNameSuffix "GMS"
+                        }
+            }
 
 }
 
@@ -34,4 +77,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //Huawei Dependencies
+    huaweiImplementation 'com.huawei.agconnect:agconnect-core:1.2.1.300'
+    huaweiImplementation 'com.huawei.hms:maps:4.0.1.301'
+
+    //Google Dependencies
+    googleImplementation 'com.google.android.gms:play-services-maps:17.0.0'
 }
