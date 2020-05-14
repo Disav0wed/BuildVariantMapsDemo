@@ -81,4 +81,7 @@ dependencies {
     //Huawei Dependencies
     huaweiImplementation 'com.huawei.agconnect:agconnect-core:1.2.1.300'
     huaweiImplementation 'com.huawei.hms:maps:4.0.1.301'
+
+    //Google Dependencies
+    googleImplementation 'com.google.android.gms:play-services-maps:17.0.0'
 }

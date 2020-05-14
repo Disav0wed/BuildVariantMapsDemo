@@ -1,9 +1,10 @@
-package com.ibrahimrecepserpici.huaweivariant
+package com.ibrahimrecepserpici.buildvariantmapsdemo
 
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.huawei.hms.maps.HuaweiMap
 import com.huawei.hms.maps.SupportMapFragment
+import com.huawei.hms.maps.model.LatLng
+import com.huawei.hms.maps.model.MarkerOptions
 import com.ibrahimrecepserpici.buildvariantmapsdemo.R
 
 class MapHelper {
@@ -20,12 +21,12 @@ class MapHelper {
     }
     fun initMap()
     {
-        Log.e("TEST","initMap Called.")
+
         val mapFragment  = (mActivity.supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment)
         mapFragment.getMapAsync {
             map = it
+            map.addMarker(MarkerOptions().position(LatLng(6.2186, -75.5742)).title("HUAWEI")).snippet = "Hello From Maps!"
         }
-
 
     }
 
