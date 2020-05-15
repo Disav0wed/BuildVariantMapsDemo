@@ -51,7 +51,7 @@ android {
         }
     }
 
-    flavorDimensions "provider"
+    flavorDimensions "provider", "api"
     productFlavors
             {
                 huawei
@@ -63,6 +63,16 @@ android {
                         {
                             dimension "provider"
                             versionNameSuffix "GMS"
+                        }
+
+                api24
+                        {
+                            dimension "api"
+
+                        }
+                api27
+                        {
+                            dimension "api"
                         }
             }
 
