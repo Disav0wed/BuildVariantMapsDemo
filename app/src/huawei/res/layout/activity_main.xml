@@ -16,5 +16,4 @@
         map:cameraTargetLng="-75.5742"
         map:cameraZoom="12" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

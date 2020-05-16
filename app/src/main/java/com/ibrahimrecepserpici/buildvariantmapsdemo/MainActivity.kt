@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         Manifest.permission.INTERNET
     )
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.ibrahimrecepserpici.buildvariantmapsdemo.R.layout.activity_main)
@@ -34,16 +33,12 @@ class MainActivity : AppCompatActivity() {
                     this
                 )
         }
-
-
     }
-
 
     private  fun askForPermissions()
     {
         ActivityCompat.requestPermissions(this, RUNTIME_PERMISSIONS, REQUEST_CODE)
     }
-
 
     private fun hasPermissions(
         context: Context, vararg permissions: String): Boolean {
@@ -57,7 +52,6 @@ class MainActivity : AppCompatActivity() {
         }
         return true
     }
-
 
     /**This method will be triggered after the permissions asked.**/
     override fun onRequestPermissionsResult(
