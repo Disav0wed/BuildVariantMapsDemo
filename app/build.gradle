@@ -51,7 +51,7 @@ android {
         }
     }
 
-    flavorDimensions "provider"
+    flavorDimensions "provider", "api"
     productFlavors
             {
                 huawei
@@ -64,6 +64,27 @@ android {
                             dimension "provider"
                             versionNameSuffix "GMS"
                         }
+
+                api24
+                        {
+                            dimension "api"
+
+                        }
+                api27
+                        {
+                            dimension "api"
+                        }
+            }
+
+
+    variantFilter
+            { variant ->
+                def names = variant.flavors*.name
+
+                if (names.contains("api27") && names.contains("huawei"))
+                {
+                    setIgnore(true)
+                }
             }
 
 }
