@@ -17,7 +17,7 @@ android {
             v1SigningEnabled true
             v2SigningEnabled true
         }
-        release{
+        release {
             storeFile file('demo.jks')
             keyAlias 'buildvariantmapsrelease'
             keyPassword '123456'
@@ -81,8 +81,7 @@ android {
             { variant ->
                 def names = variant.flavors*.name
 
-                if (names.contains("api27") && names.contains("huawei"))
-                {
+                if (names.contains("api27") && names.contains("huawei")) {
                     setIgnore(true)
                 }
             }
@@ -92,17 +91,17 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    //Huawei Dependencies
-    huaweiImplementation 'com.huawei.agconnect:agconnect-core:1.2.1.300'
-    huaweiImplementation 'com.huawei.hms:maps:4.0.1.301'
+    // Huawei Dependencies
+    huaweiImplementation 'com.huawei.agconnect:agconnect-core:1.4.0.300'
+    huaweiImplementation 'com.huawei.hms:maps:5.1.0.300'
 
-    //Google Dependencies
+    // Google Dependencies
     googleImplementation 'com.google.android.gms:play-services-maps:17.0.0'
 }
