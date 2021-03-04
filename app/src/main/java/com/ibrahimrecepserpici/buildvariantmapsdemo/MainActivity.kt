@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     private val REQUEST_CODE = 376
     private lateinit var mapHelper: MapHelper
-    private val RUNTIME_PERMISSIONS = arrayOf<String>(
+    private val RUNTIME_PERMISSIONS = arrayOf(
         Manifest.permission.ACCESS_COARSE_LOCATION,
         Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.INTERNET
@@ -21,13 +21,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.ibrahimrecepserpici.buildvariantmapsdemo.R.layout.activity_main)
+        setContentView(R.layout.activity_main)
 
-        if (!hasPermissions(this, *RUNTIME_PERMISSIONS ))
-        {
+        if (!hasPermissions(this, *RUNTIME_PERMISSIONS)) {
             askForPermissions()
-        }else
-        {
+        } else {
             mapHelper =
                 MapHelper(
                     this
@@ -35,17 +33,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private  fun askForPermissions()
-    {
+    private fun askForPermissions() {
         ActivityCompat.requestPermissions(this, RUNTIME_PERMISSIONS, REQUEST_CODE)
     }
 
     private fun hasPermissions(
-        context: Context, vararg permissions: String): Boolean {
+        context: Context, vararg permissions: String
+    ): Boolean {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             for (permission in permissions) {
-                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
-                    Log.e("NEED PERMISSION",permission)
+                if (ActivityCompat.checkSelfPermission(
+                        context,
+                        permission
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    Log.e("NEED PERMISSION", permission)
                     return false
                 }
             }
@@ -60,8 +62,7 @@ class MainActivity : AppCompatActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if(requestCode == REQUEST_CODE)
-        {
+        if (requestCode == REQUEST_CODE) {
             /**Recreate the whole activity**/
             this.recreate()
         }

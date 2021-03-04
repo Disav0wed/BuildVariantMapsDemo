@@ -8,23 +8,24 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.ibrahimrecepserpici.buildvariantmapsdemo.R
 
-class MapHelper {
+class MapHelper(activity: AppCompatActivity) {
 
-    private lateinit var map : GoogleMap
-    private var mActivity : AppCompatActivity
+    private lateinit var map: GoogleMap
+    private var mActivity: AppCompatActivity = activity
 
-    constructor(activity: AppCompatActivity)
-    {
-        mActivity = activity
+    init {
         initMap()
     }
-    fun initMap()
-    {
-        val mapFragment  = (mActivity.supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment)
+
+    private fun initMap() {
+        val mapFragment =
+            (mActivity.supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment)
         mapFragment.getMapAsync {
             map = it
-            map.addMarker(MarkerOptions().position(LatLng(6.2186, -75.5742)).title("GOOGLE")).snippet = "Hello From Maps!"
-            Log.e("TEST","GMAP CREATED")
+            map.addMarker(
+                MarkerOptions().position(LatLng(6.2186, -75.5742)).title("GOOGLE")
+            ).snippet = "Hello From Maps!"
+            Log.e("TEST", "GMAP CREATED")
         }
     }
 }
